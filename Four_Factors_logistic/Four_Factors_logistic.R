@@ -1,5 +1,7 @@
+#必要なライブラリのインポート
 library(tidyverse)
 
+#データのインポート
 teams=read_csv("../data/teams.csv")
 score=read_csv("../data/games_summary_202021.csv")
 
