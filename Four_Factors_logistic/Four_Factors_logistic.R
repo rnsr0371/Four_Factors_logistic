@@ -53,3 +53,25 @@ score=score %>% mutate(pred=ifelse(percentage>0.5,1,0))
 sum(score$pred==score$win)/nrow(score)
 
 
+#マルチレベルロジスティック回帰モデルを立てる
+library(lme4)
+score$NameShort=as.factor(score$NameShort)
+multilevel_model=glmer(win?eFG_z+TOP_z+FTR_z+ORBP_z+(1|NameShort),data=score,family = binomial)
+summary(multilevel_model)
+
+
+#集団平均中心化を施す
+score_mean=score %>% group_by(NameShort) %>% summarise(eFG_mean=mean(eFG),
+                                            TOP_mean=mean(TOP),
+                                            FTR_mean=mean(FTR),
+                                            ORBP_mean=mean(ORBP))
+
+score=score %>% left_join(score_mean,by="NameShort")
+score=score %>% mutate(eFG_c=eFG-eFG_mean,TOP_c=TOP-TOP_mean,FTR_c=FTR-FTR_mean,ORBP_c=ORBP-ORBP_mean)
+summary(score)
+
+#マルチレベルロジスティック回帰モデルを立てる
+multilevel_model=glmer(win?eFG_c+TOP_c+FTR_c+ORBP_c+(1|NameShort),data=score,family = binomial)
+summary(multilevel_model)
+
+
