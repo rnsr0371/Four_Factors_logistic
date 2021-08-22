@@ -2,3 +2,7 @@
 *.png
 .Rproj.user
 .Rhistory
+Four_Factors_and_win.R
+.ipynb_chackpoints
+*.html
+*.Rmd
