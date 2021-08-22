@@ -50,6 +50,7 @@ ryukyu=score %>% filter(NameShort=="琉球")
 best4=rbind(chiba,utsunomiya,kawasaki,ryukyu)
 
 #相関行列の確認
+library(corrplot)
 best4 %>% select(win,eFG,TOP,FTR,ORBP) %>% cor(.) %>% corrplot.mixed()
 
 #Four Factorsを標準化する
