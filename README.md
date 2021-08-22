@@ -5,7 +5,7 @@
 Four_Factor_logistic/Four_Factors_and_win2.R  
 試合の勝敗を従属変数、Four Factorsを独立変数にロジスティック回帰を行うコードです。  
 
-Four_Factors_and_win.ipynb
+Four_Factors_and_win.ipynb  
 Four_Factors_and_win2.Rと同じ分析をするコードです。
 
 Four_Factor_logistic/four_factors_and_win.Rproj  
